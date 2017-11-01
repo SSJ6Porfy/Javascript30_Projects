@@ -23,7 +23,7 @@
   <style>
 
     :root {
-      --base: yellow;
+      --base: #ffc600;
       --spacing: 10px;
       --blur: 10px;
     }
@@ -31,7 +31,7 @@
     img {
       padding: var(--spacing);
       background: var(--base);
-      filter: Blur(var(--blur));
+      filter: blur(var(--blur));
     }
 
     .h1 {
@@ -60,10 +60,12 @@
   </style>
 
   <script>
-    const inputs = document.querySelectorAll('.contorls input');
+    const inputs = document.querySelectorAll('.controls input');
 
-    function handleUpdate() {
-      console.log(this.value);
+    function handleChange() {
+      const suffix = this.dataset.sizing || "";
+      console.log(this);
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
 
     inputs.forEach(input => input.addEventListener('change', handleChange));
